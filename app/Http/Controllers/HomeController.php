@@ -85,7 +85,7 @@ class HomeController extends Controller
     /**
      * This end point returns all the items
      * If a user has a roleID of 1. They are an admin and we return all the items in the todo table
-     * If the user is not an admint, we return only their items and we return only the items that have an active=1 and are not "deleted"
+     * If the user is not an admint, we return only their items and we return only the items that have an active=1 and are not 'deleted'
      * @return \Illuminate\Http\JsonResponse
      */
     public function getAllItems(Request $request){
@@ -116,9 +116,9 @@ class HomeController extends Controller
         $id = $request->id;
         try {
             if (is_numeric($id)) {
-                DB::table("item")
+                DB::table('item')
                     ->where('id', '=', $id)
-                    ->update(["active" => 0]);
+                    ->update(['active' => 0]);
             }
             return response()->json([
                 'success' => true,
@@ -143,9 +143,9 @@ class HomeController extends Controller
         $item = $request->item;
         try {
             if (is_numeric($id)) {
-                DB::table("item")
+                DB::table('item')
                     ->where('id', '=', $id)
-                    ->update(["name" => $item]);
+                    ->update(['name' => $item]);
             }
             return response()->json([
                 'success' => true,
@@ -169,9 +169,9 @@ class HomeController extends Controller
         $id = $request->id;
         try {
             if (is_numeric($id)) {
-                DB::table("item")
+                DB::table('item')
                     ->where('id', '=', $id)
-                    ->update(["completed" => 1, "completed_at" => Carbon::now()]);
+                    ->update(['completed' => 1, 'completed_at' => Carbon::now()]);
             }
             return response()->json([
                 'success' => true,
